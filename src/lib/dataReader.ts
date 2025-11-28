@@ -8,17 +8,50 @@ export function readLines(file_path: string): string[] {
   return readFull(file_path).split('\n');
 }
 
-// TODO: readIntMatrix(filePath: string): number[][]
-// Read file and parse as 2D matrix of integers (whitespace or newline separated)
+export function readCharMatrix(filePath: string): string[][] {
+  return stringToCharMatrix(readFull(filePath));
+}
 
-// TODO: readCharMatrix(filePath: string): string[][]
-// Read file and parse as 2D matrix of characters (each line = row, each char = cell)
+export function readMatrixAndMap<T>(filePath: string, mapFn: (value: string) => T): T[][] {
+  return stringToMappedMatrix(readFull(filePath), mapFn);
+}
 
-// TODO: stringToCharMatrix(str: string): string[][]
-// Convert multiline string to 2D character matrix
+export function readIntMatrix(filePath: string): number[][] {
+  return readMatrixAndMap(filePath, Number);
+}
 
-// TODO: stringToIntMatrix(str: string): number[][]
-// Convert multiline string to 2D integer matrix
+export function readBooleanMatrix(filePath: string, trueChar: string = '#'): boolean[][] {
+  return readMatrixAndMap(filePath, (ch) => ch === trueChar);
+}
 
-// TODO: readWithRegex(filePath: string, pattern: RegExp): RegExpMatchArray[]
-// Read file and extract all regex matches (useful for structured input parsing)
+export function stringToCharMatrix(str: string): string[][] {
+  const lines = str.split('\n');
+  return lines.map(line => [...line]);
+}
+
+export function stringToMappedMatrix<T>(str: string, mapFn: (value: string) => T): T[][] {
+  const lines = str.split('\n');
+  return lines.map(line => [...line].map(mapFn));
+}
+
+export function stringToIntMatrix(str: string): number[][] {
+  return stringToMappedMatrix(str, Number);
+}
+
+export function stringToBooleanMatrix(str: string, trueChar: string = '#'): boolean[][] {
+  return stringToMappedMatrix(str, (ch) => ch === trueChar);
+}
+
+export function readWithRegex(filePath: string, pattern: RegExp): RegExpMatchArray[] {
+  const content = readFull(filePath);
+  const regex = new RegExp(pattern.source, pattern.flags.includes('g') ? pattern.flags : pattern.flags + 'g');
+
+  const matches: RegExpMatchArray[] = [];
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(content)) !== null) {
+    matches.push(match);
+  }
+  
+  return matches;
+}
