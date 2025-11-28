@@ -5,6 +5,12 @@
 // TODO: createFilledMatrix<T>(rows: number, cols: number, fillValue: T): T[][]
 // Create 2D matrix pre-filled with specific value
 
+// TODO: transpose<T>(matrix: T[][]): T[][]
+// Transpose a 2D matrix (swap rows and columns)
+
+// TODO: rotateMatrix90<T>(matrix: T[][], clockwise?: boolean): T[][]
+// Rotate 2D matrix 90 degrees
+
 // TODO: findIndices2D<T>(matrix: T[][], predicate: (val: T) => boolean): Coord[]
 // Find all coordinates where predicate returns true
 // Returns array of Coord objects for easy manipulation
