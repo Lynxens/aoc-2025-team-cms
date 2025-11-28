@@ -27,6 +27,9 @@
 // OR: within2DGrid(row: number, col: number, grid: any[][]): boolean (overload)
 // Check if coordinate is within grid bounds (prevents index out of bounds)
 
+// TODO: map2DGrid<T, U>(grid: T[][], fn: (val: T) => U): U[][]
+// Map function over all values in grid
+
 // =============================================================================
 // Coord Class
 // =============================================================================
