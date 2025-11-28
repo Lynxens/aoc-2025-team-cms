@@ -30,6 +30,9 @@
 // TODO: map2DGrid<T, U>(grid: T[][], fn: (val: T) => U): U[][]
 // Map function over all values in grid
 
+// TODO: copy2DGrid<T>(grid: T[][]): T[][]
+// Copy grid (deep copy for 2D arrays)
+
 // =============================================================================
 // Coord Class
 // =============================================================================
