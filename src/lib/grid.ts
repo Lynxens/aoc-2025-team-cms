@@ -23,7 +23,7 @@
 // Set value at coordinate in matrix (returns false if out of bounds)
 // Example: setValueAt(grid, new Coord(2, 3), 'X')
 
-// TODO: within2DGrid(coord: Coord, grid: any[][]): boolean
+// TODO: within2DGrid(coord: Coord, rows: number, cols: number): boolean
 // OR: within2DGrid(row: number, col: number, grid: any[][]): boolean (overload)
 // Check if coordinate is within grid bounds (prevents index out of bounds)
 
