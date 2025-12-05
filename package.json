@@ -5,7 +5,8 @@
   "scripts": {
     "new-day": "tsx src/scripts/generateDay.ts",
     "solve-day": "tsx src/scripts/solveDay.ts",
-    "test": "vitest --watch scripts/testDay.spec.ts"
+    "test": "vitest --watch scripts/testDay.spec.ts",
+    "testLib": "vitest --watch lib"
   },
   "devDependencies": {
     "@types/node": "^24.8.1",
