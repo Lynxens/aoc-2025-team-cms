@@ -35,14 +35,22 @@ export const unique = <T>(arr: T[]): T[] => [...new Set(arr)];
 export function* range(
   start: number,
   end: number,
-  step: number = 1
+  step: number = 1,
+  inclusive = false
 ): Generator<number> {
-  let current = start;
+  if (step === 0) {
+    throw new Error('Step cannot be zero.');
+  }
 
-  while (current < end) {
+  let current = start;
+  const hasNext = step > 0 ? () => current < end : () => current > end;
+
+  while (hasNext()) {
     yield current;
     current += step;
   }
+
+  if (inclusive) yield end;
 }
 
 export const arange = (
@@ -57,7 +65,7 @@ export const linspace = (
   num: number
 ): number[] => {
   const step = (stop - start) / (num - 1);
-  return arange(start, stop, step);
+  return [...range(start, stop, step, true)];
 };
 
 export const manhattanDistance = (

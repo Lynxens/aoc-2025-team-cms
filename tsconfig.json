@@ -8,6 +8,7 @@
     "preserveConstEnums": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "experimentalDecorators": true,
     "baseUrl": ".",
   },
   "include": ["src/**/*.ts", "src/scripts/**/*.ts"],
