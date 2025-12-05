@@ -9,12 +9,11 @@ export const createFilledMatrix = <T>(
 // Transpose a 2D matrix (swap rows and columns)
 export const transpose = <T>(matrix: T[][]): T[][] => {
   if (matrix.length === 0) return [];
-  const rows = matrix.length;
-  const cols = matrix[0].length;
-  const transposed: T[][] = createFilledMatrix(cols, rows, matrix[0][0]);
+  const { gridHeight, gridWidth } = gridDimensions(matrix);
+  const transposed: T[][] = createFilledMatrix(gridWidth, gridHeight, matrix[0][0]);
 
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
+  for (let r = 0; r < gridHeight; r++) {
+    for (let c = 0; c < gridWidth; c++) {
       transposed[c][r] = matrix[r][c];
     }
   }
@@ -70,7 +69,7 @@ export const within2DGrid = (row: number, col: number, gridHeight: number, gridW
 }
 
 // Get value at coordinate in matrix (returns undefined if out of bounds)
-export const getValueAt = <T>(matrix: T[][], coord: Coord): T | undefined {
+export const getValueAt = <T>(matrix: T[][], coord: Coord): T | undefined => {
   const { gridHeight, gridWidth } = gridDimensions(matrix);
   if (!within2DGrid(coord.row, coord.col, gridHeight, gridWidth)) {
     return undefined;
